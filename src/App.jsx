@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
+import Catalog from './pages/Catalog';
 import Login from './components/Login';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
@@ -12,10 +13,11 @@ import Vendor from './pages/Vendor';
 import TenagaKerja from './pages/TenagaKerja';
 
 function AppContent() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [page, setPage] = useState('catalog'); // catalog | login | app
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
+  if (page === 'catalog') return <Catalog onEnter={() => setPage('login')} />;
+  if (page === 'login') return <Login onLogin={() => setPage('app')} />;
 
   return (
     <Layout sidebarOpen={sidebarOpen} onToggle={() => setSidebarOpen(o => !o)}>
