@@ -1,22 +1,29 @@
+import { useLocation } from 'react-router-dom';
 import { Menu, Bell, Search, ChevronDown } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 const titles = {
-  dashboard:'Dashboard', proyek:'Manajemen Proyek', rab:'RAB & Realisasi',
-  pengeluaran:'Pengeluaran', invoice:'Invoice & Penagihan',
-  vendor:'Vendor & Supplier', tenagakerja:'Tenaga Kerja',
+  '/dashboard':    'Dashboard',
+  '/proyek':       'Manajemen Proyek',
+  '/rab':          'RAB & Realisasi',
+  '/pengeluaran':  'Pengeluaran',
+  '/invoice':      'Invoice & Penagihan',
+  '/vendor':       'Vendor & Supplier',
+  '/tenagakerja':  'Tenaga Kerja',
 };
 
-export default function Header({ currentPage, onToggle }) {
+export default function Header({ onToggle }) {
+  const location = useLocation();
   const { currentUser, invoices } = useApp();
   const alerts = invoices.filter(i => i.status === 'unpaid' || i.status === 'overdue').length;
+  const title = titles[location.pathname] || 'Dashboard';
 
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center gap-4 px-4 lg:px-6 sticky top-0 z-10 shadow-sm">
       <button onClick={onToggle} className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-500">
         <Menu size={20} />
       </button>
-      <h1 className="font-black text-gray-800 text-lg hidden sm:block">{titles[currentPage]}</h1>
+      <h1 className="font-black text-gray-800 text-lg hidden sm:block">{title}</h1>
 
       <div className="flex-1" />
 

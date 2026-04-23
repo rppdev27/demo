@@ -1,8 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { cashflowData, fmt } from '../data/mockData';
-import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { FolderOpen, TrendingUp, TrendingDown, AlertTriangle, DollarSign, FileText, Clock, CheckCircle2, Activity } from 'lucide-react';
-import Badge from '../components/ui/Badge';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { FolderOpen, TrendingUp, TrendingDown, AlertTriangle, DollarSign, FileText, Clock, Activity } from 'lucide-react';
 
 function StatCard({ title, value, sub, icon: Icon, color, trend }) {
   const colors = {
@@ -49,7 +49,8 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-export default function Dashboard({ onNavigate }) {
+export default function Dashboard() {
+  const navigate = useNavigate();
   const { projects, expenses, invoices } = useApp();
 
   const totalNilai = projects.reduce((s, p) => s + p.nilaiKontrak, 0);
@@ -180,7 +181,7 @@ export default function Dashboard({ onNavigate }) {
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
           <h3 className="font-black text-gray-800">Transaksi Terbaru</h3>
-          <button onClick={() => onNavigate('pengeluaran')} className="text-xs text-blue-600 font-bold hover:underline">Lihat Semua</button>
+          <button onClick={() => navigate('/pengeluaran')} className="text-xs text-blue-600 font-bold hover:underline">Lihat Semua</button>
         </div>
         <div className="divide-y divide-gray-50">
           {recentExp.map(e => {

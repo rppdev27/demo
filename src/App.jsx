@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import Login from './components/Login';
 import Layout from './components/Layout';
@@ -10,33 +11,25 @@ import Invoice from './pages/Invoice';
 import Vendor from './pages/Vendor';
 import TenagaKerja from './pages/TenagaKerja';
 
-const pages = {
-  dashboard: Dashboard,
-  proyek: Proyek,
-  rab: RABRealisasi,
-  pengeluaran: Pengeluaran,
-  invoice: Invoice,
-  vendor: Vendor,
-  tenagakerja: TenagaKerja,
-};
-
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentPage, setCurrentPage] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
 
-  const Page = pages[currentPage] || Dashboard;
-
   return (
-    <Layout
-      currentPage={currentPage}
-      onNavigate={(page) => { setCurrentPage(page); if (window.innerWidth < 1024) setSidebarOpen(false); }}
-      sidebarOpen={sidebarOpen}
-      onToggle={() => setSidebarOpen(o => !o)}
-    >
-      <Page onNavigate={setCurrentPage} />
+    <Layout sidebarOpen={sidebarOpen} onToggle={() => setSidebarOpen(o => !o)}>
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/dashboard"   element={<Dashboard />} />
+        <Route path="/proyek"      element={<Proyek />} />
+        <Route path="/rab"         element={<RABRealisasi />} />
+        <Route path="/pengeluaran" element={<Pengeluaran />} />
+        <Route path="/invoice"     element={<Invoice />} />
+        <Route path="/vendor"      element={<Vendor />} />
+        <Route path="/tenagakerja" element={<TenagaKerja />} />
+        <Route path="*"            element={<Navigate to="/dashboard" replace />} />
+      </Routes>
     </Layout>
   );
 }
@@ -44,7 +37,9 @@ function AppContent() {
 export default function App() {
   return (
     <AppProvider>
-      <AppContent />
+      <HashRouter>
+        <AppContent />
+      </HashRouter>
     </AppProvider>
   );
 }
