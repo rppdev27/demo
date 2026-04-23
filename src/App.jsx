@@ -12,25 +12,24 @@ import Invoice from './pages/Invoice';
 import Vendor from './pages/Vendor';
 import TenagaKerja from './pages/TenagaKerja';
 
-function AppContent() {
-  const [page, setPage] = useState('catalog'); // catalog | login | app
+function SiiKontraktor() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  if (page === 'catalog') return <Catalog onEnter={() => setPage('login')} />;
-  if (page === 'login') return <Login onLogin={() => setPage('app')} />;
+  if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
 
   return (
     <Layout sidebarOpen={sidebarOpen} onToggle={() => setSidebarOpen(o => !o)}>
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route path="/dashboard"   element={<Dashboard />} />
-        <Route path="/proyek"      element={<Proyek />} />
-        <Route path="/rab"         element={<RABRealisasi />} />
-        <Route path="/pengeluaran" element={<Pengeluaran />} />
-        <Route path="/invoice"     element={<Invoice />} />
-        <Route path="/vendor"      element={<Vendor />} />
-        <Route path="/tenagakerja" element={<TenagaKerja />} />
-        <Route path="*"            element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard"    element={<Dashboard />} />
+        <Route path="proyek"       element={<Proyek />} />
+        <Route path="rab"          element={<RABRealisasi />} />
+        <Route path="pengeluaran"  element={<Pengeluaran />} />
+        <Route path="invoice"      element={<Invoice />} />
+        <Route path="vendor"       element={<Vendor />} />
+        <Route path="tenagakerja"  element={<TenagaKerja />} />
+        <Route path="*"            element={<Navigate to="dashboard" replace />} />
       </Routes>
     </Layout>
   );
@@ -40,7 +39,11 @@ export default function App() {
   return (
     <AppProvider>
       <HashRouter>
-        <AppContent />
+        <Routes>
+          <Route path="/"                    element={<Catalog />} />
+          <Route path="/sii-kontraktor/*"    element={<SiiKontraktor />} />
+          <Route path="*"                    element={<Navigate to="/" replace />} />
+        </Routes>
       </HashRouter>
     </AppProvider>
   );

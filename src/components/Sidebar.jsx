@@ -2,13 +2,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { LayoutDashboard,FolderOpen,BarChart2,Receipt,FileText,Truck,Users,Settings,ChevronLeft,Building2,LogOut } from 'lucide-react';
 
 const nav = [
-  { path:'/dashboard',    label:'Dashboard',        icon:LayoutDashboard },
-  { path:'/proyek',       label:'Proyek',            icon:FolderOpen },
-  { path:'/rab',          label:'RAB & Realisasi',   icon:BarChart2 },
-  { path:'/pengeluaran',  label:'Pengeluaran',       icon:Receipt },
-  { path:'/invoice',      label:'Invoice',           icon:FileText },
-  { path:'/vendor',       label:'Vendor & Supplier', icon:Truck },
-  { path:'/tenagakerja',  label:'Tenaga Kerja',      icon:Users },
+  { path:'/sii-kontraktor/dashboard',    label:'Dashboard',        icon:LayoutDashboard },
+  { path:'/sii-kontraktor/proyek',       label:'Proyek',            icon:FolderOpen },
+  { path:'/sii-kontraktor/rab',          label:'RAB & Realisasi',   icon:BarChart2 },
+  { path:'/sii-kontraktor/pengeluaran',  label:'Pengeluaran',       icon:Receipt },
+  { path:'/sii-kontraktor/invoice',      label:'Invoice',           icon:FileText },
+  { path:'/sii-kontraktor/vendor',       label:'Vendor & Supplier', icon:Truck },
+  { path:'/sii-kontraktor/tenagakerja',  label:'Tenaga Kerja',      icon:Users },
 ];
 
 export default function Sidebar({ isOpen, onToggle }) {

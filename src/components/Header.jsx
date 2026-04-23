@@ -3,13 +3,13 @@ import { Menu, Bell, Search, ChevronDown } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 const titles = {
-  '/dashboard':    'Dashboard',
-  '/proyek':       'Manajemen Proyek',
-  '/rab':          'RAB & Realisasi',
-  '/pengeluaran':  'Pengeluaran',
-  '/invoice':      'Invoice & Penagihan',
-  '/vendor':       'Vendor & Supplier',
-  '/tenagakerja':  'Tenaga Kerja',
+  '/sii-kontraktor/dashboard':    'Dashboard',
+  '/sii-kontraktor/proyek':       'Manajemen Proyek',
+  '/sii-kontraktor/rab':          'RAB & Realisasi',
+  '/sii-kontraktor/pengeluaran':  'Pengeluaran',
+  '/sii-kontraktor/invoice':      'Invoice & Penagihan',
+  '/sii-kontraktor/vendor':       'Vendor & Supplier',
+  '/sii-kontraktor/tenagakerja':  'Tenaga Kerja',
 };
 
 export default function Header({ onToggle }) {

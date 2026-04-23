@@ -1,4 +1,7 @@
-export default function Catalog({ onEnter }) {
+import { useNavigate } from 'react-router-dom';
+
+export default function Catalog() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-[#0d1117] text-white" style={{ fontFamily: 'Nunito, sans-serif' }}>
       {/* Header */}
@@ -44,7 +47,7 @@ export default function Catalog({ onEnter }) {
             ))}
           </div>
           <button
-            onClick={onEnter}
+            onClick={() => navigate('/sii-kontraktor')}
             className="w-full flex items-center justify-center gap-2 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl transition-colors"
           >
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
