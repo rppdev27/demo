@@ -10,6 +10,7 @@ const titles = {
   '/sii-kontraktor/invoice':      'Invoice & Penagihan',
   '/sii-kontraktor/vendor':       'Vendor & Supplier',
   '/sii-kontraktor/tenagakerja':  'Tenaga Kerja',
+  '/sii-kontraktor/pengaturan':   'Pengaturan',
 };
 
 export default function Header({ onToggle }) {

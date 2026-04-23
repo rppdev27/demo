@@ -11,6 +11,7 @@ import Pengeluaran from './pages/Pengeluaran';
 import Invoice from './pages/Invoice';
 import Vendor from './pages/Vendor';
 import TenagaKerja from './pages/TenagaKerja';
+import Pengaturan from './pages/Pengaturan';
 
 function SiiKontraktor() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +30,7 @@ function SiiKontraktor() {
         <Route path="invoice"      element={<Invoice />} />
         <Route path="vendor"       element={<Vendor />} />
         <Route path="tenagakerja"  element={<TenagaKerja />} />
+        <Route path="pengaturan"   element={<Pengaturan />} />
         <Route path="*"            element={<Navigate to="dashboard" replace />} />
       </Routes>
     </Layout>

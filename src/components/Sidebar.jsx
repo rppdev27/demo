@@ -9,6 +9,7 @@ const nav = [
   { path:'/sii-kontraktor/invoice',      label:'Invoice',           icon:FileText },
   { path:'/sii-kontraktor/vendor',       label:'Vendor & Supplier', icon:Truck },
   { path:'/sii-kontraktor/tenagakerja',  label:'Tenaga Kerja',      icon:Users },
+  { path:'/sii-kontraktor/pengaturan',   label:'Pengaturan',        icon:Settings },
 ];
 
 export default function Sidebar({ isOpen, onToggle }) {
@@ -53,11 +54,8 @@ export default function Sidebar({ isOpen, onToggle }) {
 
         {/* Bottom */}
         <div className="p-2 border-t border-white/10 space-y-0.5">
-          <button className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-white/10 hover:text-white transition-all ${!isOpen ? 'lg:justify-center' : ''}`} title={!isOpen ? 'Pengaturan' : ''}>
-            <Settings size={18} className="flex-shrink-0" />
-            <span className={`font-semibold text-sm whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 w-0 overflow-hidden lg:hidden'}`}>Pengaturan</span>
-          </button>
-          <button className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-red-500/20 hover:text-red-400 transition-all ${!isOpen ? 'lg:justify-center' : ''}`} title={!isOpen ? 'Keluar' : ''}>
+          <button onClick={() => { navigate('/sii-kontraktor'); window.location.reload(); }}
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-red-500/20 hover:text-red-400 transition-all ${!isOpen ? 'lg:justify-center' : ''}`} title={!isOpen ? 'Keluar' : ''}>
             <LogOut size={18} className="flex-shrink-0" />
             <span className={`font-semibold text-sm whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 w-0 overflow-hidden lg:hidden'}`}>Keluar</span>
           </button>
