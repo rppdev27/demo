@@ -150,7 +150,7 @@ export default function Invoice() {
           const proj = projects.find(p => p.id === inv.proyekId);
           const borderColor = inv.status === 'paid' ? 'border-l-emerald-500' : inv.status === 'overdue' ? 'border-l-red-500' : 'border-l-amber-500';
           return (
-            <div key={inv.id} className={`bg-white rounded-2xl border border-gray-100 border-l-4 ${borderColor} shadow-sm hover:shadow-md transition-shadow`}>
+            <div key={inv.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-4 p-5">
                 <div className="flex-1 min-w-0 grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div>
