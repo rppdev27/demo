@@ -106,7 +106,7 @@ export default function Proyek() {
           const pct = (p.totalRealisasi / p.totalRAB) * 100 || 0;
           const overBudget = p.totalRealisasi > p.totalRAB;
           return (
-            <div key={p.id} className={`bg-white rounded-2xl border-l-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow ${statusColors[p.status] || 'bg-white border-l-gray-300'}`}>
+            <div key={p.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
               <div className="p-5">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
